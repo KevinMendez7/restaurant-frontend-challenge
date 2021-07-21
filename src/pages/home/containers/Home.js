@@ -1,38 +1,40 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../../_actions/Restaurant.action'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Body from '../components/Body';
 
-class Home extends React.Component {
-    constructor(props) {
-      super();
-      this.state = {
-        restaurants: []
-      };
-    }
+class Home extends React.Component {     
   
     componentDidMount() {
-      fetch('http://localhost:4000/restaurant').then(resp => {      
-        resp.json().then(res => {
-          this.setState({
-            restaurants : res
-          });
-          // console.log(res);
-        })
-      }).catch(err => {
-        console.error(err)
-      }); 
+      this.props.actions.fetchRestaurants();      
     }
   
-    render() {        
+    render() {          
+      const { restaurants } = this.props;
+      
       return (
         <div className="App">
           <Header />
-          <Body restaurants={this.state.restaurants} />
+          <Body restaurants={restaurants} />
           <Footer />          
         </div>
       );
     }
   }
 
-  export default Home;
+  const mapDispatchToProps = dispatch => {
+    return {
+      actions: bindActionCreators(actions, dispatch)
+    };
+  }
+
+  const mapStateToProps = state => {
+    return {
+      restaurants: state.restaurant.data
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Home);

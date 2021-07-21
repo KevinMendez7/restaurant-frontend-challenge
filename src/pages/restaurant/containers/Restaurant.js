@@ -13,11 +13,9 @@ class Restaurant extends React.Component  {
       };
     }
    
-    componentDidMount() {
-      console.log(this.props.location)
+    componentDidMount() {      
       fetch(`http://localhost:4000/restaurant/${this.props.match.params.id}`).then(resp => {      
-        resp.json().then((res) => {                  
-            console.log(res);
+        resp.json().then((res) => {                              
           this.setState({
             restaurant : res,
             loading: false
@@ -37,7 +35,7 @@ class Restaurant extends React.Component  {
             : <>
                 <h1>{this.state.restaurant.name}</h1>
                 <p>{this.state.restaurant.description}</p>
-                <Pictures pictures={this.state.pictures} />
+                <Pictures id={this.props.match.params.id} />
                 <Reviews id={this.props.match.params.id} />                           
               </> 
           }

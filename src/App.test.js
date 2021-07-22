@@ -14,7 +14,7 @@ describe('<App />', () => {
 
   describe('<Routes>', () => {
 
-    test('Path / should be <Home /> Component', () => {
+    it('Path / should be <Home /> Component', () => {
       const routes = wrapper.find(Route);
       const pathMap = findRoutes(routes);
       
@@ -22,7 +22,7 @@ describe('<App />', () => {
   
     });
 
-    test('Path /restaurant/:id should be < /> Component', () => {
+    it('Path /restaurant/:id should be < /> Component', () => {
       const routes = wrapper.find(Route);
       const pathMap = findRoutes(routes);
       
@@ -30,7 +30,7 @@ describe('<App />', () => {
   
     });
 
-    test('Unknown path(undefined) should be <NotFoundPage /> Component', () => {
+    it('Unknown path(undefined) should be <NotFoundPage /> Component', () => {
       const routes = wrapper.find(Route);
       const pathMap = findRoutes(routes);
       
@@ -38,14 +38,14 @@ describe('<App />', () => {
   
     });
 
-    test('Should be one <Router /> Component from React Router', () => {
+    it('Should be one <Router /> Component from React Router', () => {
       const router = wrapper.find(Router);      
       
       expect(router).toHaveLength(1);
   
     });
 
-    test('Should be one <Switch /> Component from React Router', () => {
+    it('Should be one <Switch /> Component from React Router', () => {
       const router = wrapper.find(Switch);      
       
       expect(router).toHaveLength(1);

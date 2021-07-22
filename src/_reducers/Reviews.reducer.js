@@ -4,7 +4,8 @@ import {
     FETCH_REVIEWS_FAILED,
     POST_REVIEW_START,
     POST_REVIEW_SUCCESS,
-    POST_REVIEW_FAILED
+    POST_REVIEW_FAILED,
+    RESTART_DATA
  } from '../_actionTypes/Reviews.actionTypes';
 
 const initialState = {
@@ -31,6 +32,11 @@ const reviews = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             };
+        case RESTART_DATA : 
+            return {
+                ...state,                
+                data: []
+            };
         case POST_REVIEW_START :             
             return {
                 ...state                
@@ -48,7 +54,7 @@ const reviews = (state = initialState, action) => {
             return {
                 ...state,                
                 error: action.payload
-            };
+            };        
         default : 
             return state;
     };

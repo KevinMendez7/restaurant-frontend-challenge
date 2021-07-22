@@ -3,15 +3,19 @@ import styled from "styled-components";
 const Header = _ => {
     return (
         <CustomHeader>          
-            <Title>Restaurant Reviews</Title>
-            <Paragraph>Description of the page</Paragraph>
+            <Title>Reseñas de Restaurantes</Title>
+            <Paragraph>
+                Bienvenido a nuestra pagina de reseñas, 
+                aqui puedes encontrar los comentarios de la gente, 
+                fotos y descripción del restaurante</Paragraph>
           </CustomHeader>
     );
 };
 
 const CustomHeader = styled.header`
     background-color: #282c34;
-    min-height: 50vh;
+    margin-bottom: 20px;
+    padding: 30px 15px;  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,9 +25,12 @@ const CustomHeader = styled.header`
 `;
 
 const Title = styled.h1`
+    text-align: center;
 `;
 
 const Paragraph = styled.p`
+    text-align: center;
+    font-size: 20px;
 `;
 
 export default Header;

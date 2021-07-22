@@ -5,10 +5,12 @@ import * as actions from '../../../_actions/Restaurant.action'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Body from '../components/Body';
+import styled from "styled-components"
+import GlobalWrapper from '../components/GlobalWrapper';
 
 class Home extends React.Component {     
   
-    componentDidMount() {
+    componentDidMount() {      
       this.props.actions.fetchRestaurants();      
     }
   
@@ -16,17 +18,26 @@ class Home extends React.Component {
       const { restaurants } = this.props;
       
       return (
-        <div className="App">
-          <Header />
-          <Body restaurants={restaurants} />
-          <Footer />          
-        </div>
+        <GlobalWrapper>
+          <Container>
+            <Header />
+            <Body restaurants={restaurants} />
+            <Footer />          
+          </Container>
+        </GlobalWrapper>
       );
     }
   }
 
+  const Container = styled.div`
+
+    background: #282c34;
+    padding: 0;
+    margin: 0;
+  `;
+
   const mapDispatchToProps = dispatch => {
-    return {
+    return {  
       actions: bindActionCreators(actions, dispatch)
     };
   }

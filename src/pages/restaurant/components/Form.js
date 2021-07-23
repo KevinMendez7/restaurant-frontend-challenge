@@ -13,7 +13,7 @@ const Form = ({ submitReview, onChangeName, onChangeComment, name, comment }) =>
   );
 }
 
-const CustomForm = styled.form`
+export const CustomForm = styled.form`
   display: flex;
   flex-direction: column;
   
@@ -31,7 +31,7 @@ const CustomForm = styled.form`
   }  
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   color: #ff9900;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -58,7 +58,7 @@ const Label = styled.label`
   
 `;
 
-const InputName = styled.input`
+export const InputName = styled.input`
   
   width: 20%;
   line-height: 20px;  
@@ -90,7 +90,7 @@ const InputName = styled.input`
   }  
 `;
 
-const InputComment = styled.textarea`
+export const InputComment = styled.textarea`
   
   width: 60%;
   line-height: 20px;  
@@ -121,7 +121,7 @@ const InputComment = styled.textarea`
   }  
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   background: #ff9900;
   color: #fff;
   width: 10%;

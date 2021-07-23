@@ -53,9 +53,9 @@ const restaurant = (state = initialState ,action) => {
         case RESTART_DATA : 
             return {
                 ...state,                
-                restaurant: []
+                restaurant: {}
             };
-        default : 
+        default :         
             return state;
     };
 };

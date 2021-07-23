@@ -12,7 +12,7 @@ const Header = _ => {
     );
 };
 
-const CustomHeader = styled.header`
+export const CustomHeader = styled.header`
     background-color: #282c34;
     margin-bottom: 20px;
     padding: 30px 15px;  
@@ -24,11 +24,11 @@ const CustomHeader = styled.header`
     color: white;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
     text-align: center;
 `;
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
     text-align: center;
     font-size: 20px;
 `;

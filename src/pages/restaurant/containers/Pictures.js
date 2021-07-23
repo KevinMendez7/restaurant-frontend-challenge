@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import * as actions from '../../../_actions/Pictures.action';
 import { specificSize } from '../../../utils/devicesSizeValidation';
 
-class Pictures extends React.PureComponent {
+export class Pictures extends React.PureComponent {
 
   componentDidMount() {           
     this.props.actions.fetchPictures(this.props.id);        
@@ -36,7 +36,7 @@ class Pictures extends React.PureComponent {
   }
 }
 
-const Title = styled.h3`
+export const Title = styled.h3`
   color: #ff9900;
   font-size: 50px;
   
@@ -55,7 +55,7 @@ const Title = styled.h3`
   }
 `;
 
-const PicturesContainer = styled.div`
+export const PicturesContainer = styled.div`
 
   display: flex;
   margin: auto;
@@ -76,7 +76,7 @@ const PicturesContainer = styled.div`
 
 `;
 
-const PicturesImg = styled.img`
+export const PicturesImg = styled.img`
 
   margin-left: 20px;
   margin-right: 20px;
@@ -97,7 +97,7 @@ const PicturesImg = styled.img`
   }
 `;
 
-const NoPictures = styled.h2`
+export const NoPictures = styled.h2`
 
   font-weight: normal;
 

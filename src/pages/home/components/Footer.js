@@ -13,7 +13,7 @@ const Footer = _ => {
     );
 }
 
-const CustomFooter = styled.header`
+export const CustomFooter = styled.footer`
     background-color: #282c34;
     margin-top: 20px;
     padding: 30px 15px;    
@@ -26,7 +26,8 @@ const CustomFooter = styled.header`
     color: white;
 `;
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
+    font-size: 15px;
 `;
 
 export default Footer;

@@ -6,7 +6,7 @@ const Text = props => {
     );
 }
 
-const Description = styled.p`
+export const Description = styled.p`
   text-align: center;  
 `;
 

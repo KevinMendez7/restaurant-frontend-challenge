@@ -39,7 +39,8 @@ const reviews = (state = initialState, action) => {
             };
         case POST_REVIEW_START :             
             return {
-                ...state                
+                ...state,
+                loading: true                
             };
         case POST_REVIEW_SUCCESS :            
         const data = state.data;

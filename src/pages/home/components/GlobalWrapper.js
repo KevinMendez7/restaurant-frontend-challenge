@@ -2,7 +2,7 @@ import React from "react";
 import { createGlobalStyle } from "styled-components"
 
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 const GlobalWrapper = ({ children }) => {
     return (
       <React.Fragment>
-        <GlobalStyle theme="purple" />
+        <GlobalStyle />
         {children}
       </React.Fragment>
     )

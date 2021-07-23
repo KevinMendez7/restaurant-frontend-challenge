@@ -13,7 +13,7 @@ const store = createStore(
   reducer,  
   composeWithDevTools(
     applyMiddleware(
-      logger,
+      // logger,
       thunk
     )
   )
@@ -21,8 +21,8 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
+    <React.StrictMode>      
+      <App />      
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')

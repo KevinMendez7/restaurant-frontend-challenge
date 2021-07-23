@@ -3,30 +3,38 @@ import { Link } from 'react-router-dom';
 import { specificSize } from '../../../utils/devicesSizeValidation';
 import Text from './Text';
 
-const Body = ({ restaurants }) => {
-    return (
-        <BodyContainer>
-            { 
-              restaurants.map(({ _id, main_picture, name, description}, index) => (
-                <RestaurantContainer key={index}>
-                  <MainPicture src={main_picture} alt='main_picture' />
-                  <Name>{name}</Name>
-                  <Text text={description} letters={100} />
-                  <LinkReview 
-                    to={
-                      { 
-                        pathname: `/restaurant/${_id}`                        
-                      }
-                    }
-                  >Ver mas...</LinkReview>
-                </RestaurantContainer>
-              ))
+const Body = ({ restaurants }) => (
+  <BodyContainer>
+    { 
+      !restaurants.length > 0 
+      ? <NoRestaurants>No encontramos restaurantes, lo sentimos</NoRestaurants>
+      : restaurants.map(({ _id, main_picture, name, description}, index) => (
+        <RestaurantContainer key={index}>
+          <MainPicture src={main_picture} alt='main_picture' />
+          <Name>{name}</Name>
+          <Text text={description} letters={100} />
+          <LinkReview 
+            to={
+              { 
+                pathname: `/restaurant/${_id}`                        
+              }
             }
-          </BodyContainer>
-    );
-}
+          >Ver mas...</LinkReview>
+        </RestaurantContainer>
+      ))
+    }
+    </BodyContainer>
+);
 
-const BodyContainer = styled.div`
+
+export const NoRestaurants = styled.h1`
+  min-height: 25vh;
+  margin-top: 5%;
+  text-align: center;
+  color: #fff;
+`;
+
+export const BodyContainer = styled.div`
   margin: 0 10px;
   display: flex;
   justify-content: center;
@@ -51,7 +59,7 @@ const BodyContainer = styled.div`
 
 `;
 
-const RestaurantContainer = styled.div`
+export const RestaurantContainer = styled.div`
 
   background: #fff;
   display: flex;
@@ -77,7 +85,7 @@ const RestaurantContainer = styled.div`
 
 `;
 
-const MainPicture = styled.img`
+export const MainPicture = styled.img`
 
   width: 20%;
   align-self: center;
@@ -97,12 +105,12 @@ const MainPicture = styled.img`
 
 `;
 
-const Name = styled.h2`
+export const Name = styled.h2`
   text-align: center;
   color: #000;
 `;
 
-const LinkReview = styled(Link)`
+export const LinkReview = styled(Link)`
   color: #ff9900;
   text-decoration: none;
   display: flex;

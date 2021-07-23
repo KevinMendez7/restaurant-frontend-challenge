@@ -1,3 +1,4 @@
+import axios  from 'axios';
 import { 
     FETCH_REVIEWS_START, 
     FETCH_REVIEWS_SUCCESS, 
@@ -15,14 +16,17 @@ export const fetchReviews = (restaurantId) => {
     return async dispatch => {        
         dispatch(request(FETCH_REVIEWS_START));
         try {
-            const resp = await fetch(`http://localhost:4000/restaurant/${restaurantId}/review`);
-            const reviews = await resp.json();      
+            
+            if(!restaurantId) {
+                return dispatch(failed(FETCH_REVIEWS_FAILED, 'Restaurant id must be provided'));
+            }
+            const reviews = await axios.get(`http://localhost:4000/restaurant/${restaurantId}/review`);
             
             if(!reviews) {
-                return dispatch(failed(POST_REVIEW_FAILED, 'No reviews found'));    
+                return dispatch(failed(FETCH_REVIEWS_FAILED, 'No reviews found'));    
             }
             
-            dispatch(success(FETCH_REVIEWS_SUCCESS, reviews.data));
+            dispatch(success(FETCH_REVIEWS_SUCCESS, reviews.data.data));
             
         } catch(error) {
             dispatch(failed(FETCH_REVIEWS_FAILED, error));
@@ -35,24 +39,21 @@ export const postReview = (restaurantId, { name, comment }) => {
     return async dispatch => {
         dispatch(request(POST_REVIEW_START));
         try {
-            const resp = await fetch(
+
+            if(!restaurantId) {
+                return dispatch(failed(POST_REVIEW_FAILED, 'Restaurant id must be provided'));
+            }
+
+            const review = await axios.post(
                 `http://localhost:4000/restaurant/${restaurantId}/review`, 
-                { 
-                    method: 'POST', 
-                    body: JSON.stringify({ name, comment }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }                     
-                },
-                
-            );
-            const review = await resp.json();    
+                { name, comment }                
+            );             
             
             if(!review) {
-                return dispatch(failed(POST_REVIEW_FAILED, 'No reviews found'));    
+                return dispatch(failed(POST_REVIEW_FAILED, 'Something happen posting a review'));    
             }
             
-            dispatch(success(POST_REVIEW_SUCCESS, review));            
+            dispatch(success(POST_REVIEW_SUCCESS, review.data));            
         } catch(error) {
             console.error(error);
             dispatch(success(POST_REVIEW_FAILED, error));            

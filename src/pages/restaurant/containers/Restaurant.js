@@ -7,10 +7,12 @@ import { specificSize } from '../../../utils/devicesSizeValidation';
 import Pictures from './Pictures';
 import Reviews from './Reviews';
 
-class Restaurant extends React.Component  {
+export class Restaurant extends React.Component  {
    
     componentDidMount() {
-      window.scrollTo(0, 0);
+      if(process.env.NODE_ENV !== 'test') {
+        window.scrollTo(0, 0);
+      }
       this.props.actions.fetchRestaurantById(this.props.match.params.id);      
     }
 
@@ -18,7 +20,8 @@ class Restaurant extends React.Component  {
       this.props.actions.restartData();
     }
   
-    render() {      
+    render() {    
+ 
       const { match : { params : { id } }, loading, restaurant : { restaurant }} = this.props;      
       return (
         <div>
@@ -40,7 +43,7 @@ class Restaurant extends React.Component  {
     };
 };
 
-const Container = styled.div`
+export const Container = styled.div`
 
   padding: 40px 180px;
 
@@ -57,7 +60,7 @@ const Container = styled.div`
   }
 `;
 
-const ImageTitleContainer = styled.div`
+export const ImageTitleContainer = styled.div`
 
   display: flex;
   flex-direction: row;
@@ -72,7 +75,7 @@ const ImageTitleContainer = styled.div`
 
 `;
 
-const Image = styled.img`
+export const Image = styled.img`
 
   width: 25%;
 
@@ -90,7 +93,7 @@ const Image = styled.img`
   }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   margin-left: 5%;
   font-size: 80px;
   padding-top: 5%;
@@ -117,7 +120,7 @@ const Title = styled.h1`
   }
 `;
 
-const Description = styled.p`  
+export const Description = styled.p`  
 
   font-size: 22px;
 

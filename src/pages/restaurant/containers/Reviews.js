@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { specificSize } from '../../../utils/devicesSizeValidation';
 import Form from '../components/Form';
 
-class Reviews extends React.PureComponent {
+export class Reviews extends React.PureComponent {
 
   constructor() {
     super();
@@ -40,7 +40,7 @@ class Reviews extends React.PureComponent {
     this.setState({ comment : e.target.value});
   }
 
-  componentDidMount() {        
+  componentDidMount() {           
     this.props.actions.fetchReviews(this.props.id);        
   }
 
@@ -48,7 +48,7 @@ class Reviews extends React.PureComponent {
     this.props.actions.restartData();
   }
 
-  render() {         
+  render() {     
     return (
       <>
         <Title>Comentarios</Title>                
@@ -80,11 +80,11 @@ class Reviews extends React.PureComponent {
   };
 }
 
-const ReviewContainer = styled.div`
+export const ReviewContainer = styled.div`
   // padding: 30px 0;
 `;
 
-const Title = styled.h3`
+export const Title = styled.h3`
   color: #ff9900;
   font-size: 50px;
 
@@ -103,7 +103,7 @@ const Title = styled.h3`
   }
 `; 
 
-const Name = styled.span`
+export const Name = styled.span`
   color: #ff9900;
   font-size: 25px;
   font-weight: bold;
@@ -123,7 +123,7 @@ const Name = styled.span`
   }  
 `; 
 
-const DateReview = styled.span`  
+export const DateReview = styled.span`  
 
   font-weight: bold;
   font-size: 24px;  
@@ -143,7 +143,7 @@ const DateReview = styled.span`
   }    
 `; 
 
-const Paragraph = styled.span`    
+export const Paragraph = styled.span`    
 
   font-size: 24px;
 
@@ -162,7 +162,7 @@ const Paragraph = styled.span`
   }    
 `; 
 
-const Divider = styled.hr`  
+export const Divider = styled.hr`  
   border-color: #00000061;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -180,7 +180,7 @@ const Divider = styled.hr`
   }
 `; 
 
-const CommentTitle = styled.h3`
+export const CommentTitle = styled.h3`
   color: #ff9900;
   margin-top: 80px;
   margin-bottom: 20px;
@@ -203,7 +203,7 @@ const CommentTitle = styled.h3`
 
 `; 
 
-const NoReviews = styled.h2`
+export const NoReviews = styled.h2`
 
   font-weight: normal;
 

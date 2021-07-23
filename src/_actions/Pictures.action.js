@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { 
     FETCH_PICTURES_START, 
     FETCH_PICTURES_SUCCESS, 
@@ -7,26 +8,29 @@ import {
 
 export const restartData = _ => ({ type: RESTART_DATA });
 
-export const fetchPictures = (restaurantId) => {            
-    return async dispatch => {        
+export const fetchPictures = (restaurantId) => {                
+    return async dispatch => {                
         dispatch(request(FETCH_PICTURES_START));
-        try {
-            const resp = await fetch(`http://localhost:4000/restaurant/${restaurantId}/pictures`);
-            const pictures = await resp.json(); 
+        try {            
+ 
+            if(!restaurantId) {
+                return dispatch(failed(FETCH_PICTURES_FAILED, 'Restaurant id must be provided'));
+            }
+
+            const pictures = await axios.get(`http://localhost:4000/restaurant/${restaurantId}/pictures`);            
             if(!pictures) {
                 return dispatch(failed(FETCH_PICTURES_FAILED, 'No pictures found'));    
             }        
-            dispatch(success(FETCH_PICTURES_SUCCESS, pictures.data));
+            return dispatch(success(FETCH_PICTURES_SUCCESS, pictures.data.data));
             
         } catch(error) {
             console.error(error);
-            dispatch(failed(FETCH_PICTURES_FAILED, error));
-        }
+            return dispatch(failed(FETCH_PICTURES_FAILED, error));
+        }        
     }    
-
 };
 
-const request = (type) => ({ type });
+const request = (type) => ({type });
     
 const success = (type, data) => ({ type, payload: data })
 

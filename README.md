@@ -1,6 +1,6 @@
 # Restaurant-Frontend-Challenge
 
-This is a Review Restaurants page for a challenge, Please be sure that you already have restaurant-challenge-tribal project() and its running, otherwise you will see the message No restaurants found
+This is a Review Restaurants page for a challenge, Please be sure that you already have restaurant-challenge-tribal project(https://github.com/KevinMendez7/restaurant-challenge-tribal/tree/master) and its running, otherwise you will see the message No restaurants found
 
 ## How to run the app
 
